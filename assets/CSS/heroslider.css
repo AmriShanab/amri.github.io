@@ -229,3 +229,118 @@
         font-size: 1rem;
     }
 }
+
+
+/* Updated Slider Styles */
+.slide-message {
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+    max-width: 600px;
+    padding: 30px;
+    background: rgba(31, 31, 46, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border-left: 4px solid #4F46E5;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.carousel-item.active .slide-message {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-message h3 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #8B5CF6, #4F46E5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.slide-message p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Welcome Note Section */
+.welcome-note-section {
+    padding: 100px 0;
+    background: white;
+    position: relative;
+}
+
+.welcome-note {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.welcome-note h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.welcome-note h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #4F46E5, #8B5CF6);
+}
+
+.welcome-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.welcome-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .slide-message {
+        left: 30px;
+        bottom: 60px;
+        max-width: 80%;
+        padding: 20px;
+    }
+    
+    .slide-message h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .slide-message {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+        bottom: 40px;
+    }
+    
+    .welcome-note h2 {
+        font-size: 2rem;
+    }
+    
+    .welcome-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+}

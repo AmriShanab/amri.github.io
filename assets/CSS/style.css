@@ -28,12 +28,12 @@
 }
 
 .logo-img {
-    height: 60px; /* keep navbar height small */
+    height: 80px; /* Increased from 60px */
     width: auto;
     margin-right: 12px;
     transition: all 0.3s ease;
-    transform: scale(1.8); /* visually enlarges the image */
-    transform-origin: left center; /* keeps alignment clean */
+    transform: scale(2); /* Increased from 1.8 */
+    transform-origin: left center;
 }
 
 
