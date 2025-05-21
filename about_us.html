@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/heroslider.css">
     <link rel="stylesheet" href="assets/styles/about_us.css">
@@ -51,7 +56,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="about_us.html">
                             <span class="nav-link-content">
                                 <span class="nav-text">About Us</span>
                                 <span class="nav-underline"></span>
@@ -59,7 +64,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="services.html">
                             <span class="nav-link-content">
                                 <span class="nav-text">Services</span>
                                 <span class="nav-underline"></span>
@@ -90,8 +95,13 @@
     </nav>
 
     <!-- Who we are -->
-    <section class="about-section">
+    <section class="about-section  vector-bg-section">
         <div class="container">
+            <div class="vector-bg-elements">
+                <div class="vector-circle"></div>
+                <div class="vector-triangle"></div>
+                <div class="vector-wave"></div>
+            </div>
             <div class="about-content">
                 <div class="about-text">
                     <span class="section-subtitle">Our Identity</span>
@@ -185,8 +195,13 @@
     <!-- Our Mission Section -->
 
     <!-- Our Mission Section -->
-    <section class="mission-section">
+    <section class="mission-section vector-bg-section">
         <div class="container">
+             <div class="vector-bg-elements">
+                <div class="vector-circle"></div>
+                <div class="vector-triangle"></div>
+                <!-- <div class="vector-wave"></div> -->
+            </div>
             <div class="mission-content">
                 <div class="mission-text">
                     <span class="section-subtitle">Our Purpose</span>
@@ -230,7 +245,7 @@
     </section>
 
 
-<!-- Our Values -->
+    <!-- Our Values -->
 
 
     <!-- Our Values Section -->
@@ -329,6 +344,76 @@
             </div>
         </div>
     </section>
+
+
+    <!-- <section class="choose-section">
+        <div class="container">
+            <div class="choose-content">
+                <div class="choose-image">
+                    <div class="image-wrapper">
+                        <img src="assets/why_choose_us.jpg" alt="Why Choose Endevo">
+                        <div class="image-overlay"></div>
+                        <div class="shape-decoration"></div>
+                    </div>
+                </div>
+                <div class="choose-text">
+                    <span class="section-subtitle">Our Advantages</span>
+                    <h2 class="section-title">Why Choose Us</h2>
+                    <div class="choose-list">
+                        <div class="choose-item" data-aos="fade-up">
+                            <div class="choose-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="currentColor"
+                                        d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" />
+                                </svg>
+                            </div>
+                            <div class="choose-content">
+                                <h4>Proven Expertise</h4>
+                                <p>10+ years of delivering successful digital solutions across industries with
+                                    measurable results.</p>
+                            </div>
+                        </div>
+                        <div class="choose-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="choose-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="currentColor"
+                                        d="M12,15C13.66,15 15,13.66 15,12C15,10.34 13.66,9 12,9C10.34,9 9,10.34 9,12C9,13.66 10.34,15 12,15M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" />
+                                </svg>
+                            </div>
+                            <div class="choose-content">
+                                <h4>Timely Delivery</h4>
+                                <p>98% of projects delivered on or before deadline with rigorous quality assurance.</p>
+                            </div>
+                        </div>
+                        <div class="choose-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="choose-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="currentColor"
+                                        d="M12,2L4,5V11.09C4,16.14 7.41,20.85 12,22C16.59,20.85 20,16.14 20,11.09V5L12,2Z" />
+                                </svg>
+                            </div>
+                            <div class="choose-content">
+                                <h4>Cutting-Edge Technology</h4>
+                                <p>We stay ahead of the curve with the latest frameworks, tools, and methodologies.</p>
+                            </div>
+                        </div>
+                        <div class="choose-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="choose-icon">
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <path fill="currentColor"
+                                        d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" />
+                                </svg>
+                            </div>
+                            <div class="choose-content">
+                                <h4>Dedicated Teams</h4>
+                                <p>Get your own skilled professionals who become an extension of your organization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
 
 
     <!-- Footer -->

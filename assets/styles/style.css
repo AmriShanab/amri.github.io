@@ -262,7 +262,7 @@
   left: 0;
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, #4F46E5, #8B5CF6);
+  /* background: linear-gradient(90deg, #4F46E5, #8B5CF6); */
   border-radius: 2px;
 }
 

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Endevo - Our Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <!-- <link rel="stylesheet" href="assets/styles/heroslider.css"> -->
+    <!-- <link rel="stylesheet" href="assets/styles/about_us.css"> -->
+    <link rel="stylesheet" href="assets/styles/footer.css">
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --primary-light: #6366F1;
+            --white: #ffffff;
+            --gray-light: #f5f7fa;
+            --gray-dark: #6B7280;
+        }
+
+        body {
+            font-family: "Nunito Sans", sans-serif ;
+            background-color: var(--gray-light);
+        }
+
+        .projects-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray-dark);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 12px 24px;
+            margin: 0 10px;
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-dark);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .category-tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .category-tab.active {
+            color: var(--primary-color);
+        }
+
+        .category-tab.active::after {
+            width: 100%;
+        }
+
+        .category-tab:hover:not(.active) {
+            color: var(--primary-light);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.15);
+        }
+
+        .project-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: var(--gray-dark);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .view-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-tab {
+                margin: 5px 0;
+            }
+        }
+
+
+        /* Gallery Styles */
+
+        /* Gallery Modal Styles */
+        .gallery-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+        }
+
+        .gallery-container {
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .gallery-main-image {
+            width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .gallery-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .gallery-nav button {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-nav button:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .gallery-thumbnail {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-thumbnail:hover,
+        .gallery-thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--primary-color);
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .gallery-thumbnails::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .gallery-thumbnails::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .gallery-thumbnails::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .gallery-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light premium-navbar">
+        <div class="container">
+            <!-- Logo Container with Space for Logo Image -->
+            <div class="navbar-brand-container">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/Untitled design.png" alt="Endevo Logo" class="logo-img">
+                    <span class="logo-text"></span>
+                </a>
+            </div>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <div class="animated-hamburger">
+                    <span class="hamburger-line top-line"></span>
+                    <span class="hamburger-line middle-line"></span>
+                    <span class="hamburger-line bottom-line"></span>
+                </div>
+            </button>
+
+            <!-- Main Navigation -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span class="nav-link-content">
+                                <span class="nav-text">Home</span>
+                                <span class="nav-underline"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-link-content">
+                                <span class="nav-text">About Us</span>
+                                <span class="nav-underline"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-link-content">
+                                <span class="nav-text">Services</span>
+                                <span class="nav-underline"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span class="nav-link-content">
+                                <span class="nav-text">Projects</span>
+                                <span class="nav-underline"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-link-content">
+                                <span class="nav-text">Contact</span>
+                                <span class="nav-underline"></span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="projects-section">
+        <div class="section-title">
+            <h2>Our Projects</h2>
+            <p>Explore our portfolio of successful events and website developments</p>
+        </div>
+
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="events">Events</button>
+            <button class="category-tab" data-category="websites">Websites</button>
+        </div>
+
+        <!-- Events Category -->
+        <div class="category-content active" id="events-content">
+            <div class="projects-container">
+                <!-- BIMT Graduation -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>BIMT Graduation</h3>
+                        <p>Memorable graduation ceremony for BIMT students with full event management services.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- CMI Launch -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>CMI Launch</h3>
+                        <p>Successful product launch event with media coverage and guest management.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- IFA Conference -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>IFA Conference</h3>
+                        <p>International conference with speakers from around the world and live streaming.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- Global CEO Leadership Excellence Awards Night -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>Global CEO Leadership Excellence Awards</h3>
+                        <p>Prestigious awards night recognizing outstanding leadership in the corporate world.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- Next Education Grand Opening -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>Next Education Grand Opening</h3>
+                        <p>Grand opening ceremony for Next Education's new campus with ribbon-cutting.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- Next Education Edu Expo -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>Next Education Edu Expo</h3>
+                        <p>Educational expo showcasing innovative learning solutions and technologies.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- Signing Ceremony with Angelo Mathews -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1605&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>Signing Ceremony with Angelo Mathews</h3>
+                        <p>Exclusive signing ceremony with cricket star Angelo Mathews as brand ambassador.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+
+                <!-- Next Education City Tour 2024,2025 -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>Next Education City Tour 2024,2025</h3>
+                        <p>Multi-city educational tour promoting innovative learning approaches.</p>
+                        <a href="#" class="view-btn">View Gallery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Websites Category -->
+        <div class="category-content" id="websites-content">
+            <div class="projects-container">
+                <!-- Carewells Website -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>Carewells Website</h3>
+                        <p>Modern, responsive website for healthcare services with appointment booking system.</p>
+                        <a href="https://carewells.com" target="_blank" class="view-btn">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- BIMT Website -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>BIMT Website</h3>
+                        <p>Educational institution website with course management and student portal.</p>
+                        <a href="https://bimt.edu" target="_blank" class="view-btn">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- IHL Website -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>IHL Website</h3>
+                        <p>Corporate website for international holdings with multilingual support.</p>
+                        <a href="https://ihlgroup.com" target="_blank" class="view-btn">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Asma Muftah Al-Ghanem Advocates Website -->
+                <div class="project-card">
+                    <div class="project-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                    </div>
+                    <div class="project-content">
+                        <h3>Asma Muftah Al-Ghanem Advocates</h3>
+                        <p>Professional legal services website with case management features.</p>
+                        <a href="https://amalaw.com" target="_blank" class="view-btn">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="gallery-modal" id="galleryModal">
+        <div class="gallery-container">
+            <span class="gallery-close" id="galleryClose">&times;</span>
+            <h3 class="gallery-title" id="galleryTitle">Gallery</h3>
+            <img src="" alt="" class="gallery-main-image" id="mainGalleryImage">
+            <div class="gallery-nav">
+                <button id="prevImage"><i class="fas fa-chevron-left"></i></button>
+                <button id="nextImage"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="gallery-thumbnails" id="galleryThumbnails">
+                <!-- Thumbnails will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.category-tab');
+            const contents = document.querySelectorAll('.category-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    const category = this.getAttribute('data-category');
+                    document.getElementById(`${category}-content`).classList.add('active');
+                });
+            });
+        });
+
+
+        // Gallery data for each event
+        const galleries = {
+            'bimt-graduation': {
+                title: 'BIMT Graduation',
+                images: [
+                    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    'https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80'
+                ]
+            },
+            'cmi-launch': {
+                title: 'CMI Launch',
+                images: [
+                    'https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80',
+                    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                ]
+            },
+            // Add similar objects for all your events with their actual images
+            'ifa-conference': {
+                title: 'IFA Conference',
+                images: [
+                    'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                ]
+            }
+            // Continue for all your events...
+        };
+
+        // Gallery functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const galleryModal = document.getElementById('galleryModal');
+            const galleryClose = document.getElementById('galleryClose');
+            const mainGalleryImage = document.getElementById('mainGalleryImage');
+            const galleryTitle = document.getElementById('galleryTitle');
+            const galleryThumbnails = document.getElementById('galleryThumbnails');
+            const prevButton = document.getElementById('prevImage');
+            const nextButton = document.getElementById('nextImage');
+
+            let currentGallery = null;
+            let currentIndex = 0;
+
+            // Add click event to all "View Gallery" buttons
+            document.querySelectorAll('.view-btn[href="#"]').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const projectCard = this.closest('.project-card');
+                    const projectTitle = projectCard.querySelector('h3').textContent;
+                    const galleryId = projectTitle.toLowerCase().replace(/ /g, '-');
+
+                    if (galleries[galleryId]) {
+                        currentGallery = galleries[galleryId];
+                        currentIndex = 0;
+                        showGallery();
+                    }
+                });
+            });
+
+            // Close gallery
+            galleryClose.addEventListener('click', function () {
+                galleryModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Previous image
+            prevButton.addEventListener('click', function () {
+                if (currentGallery) {
+                    currentIndex = (currentIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+                    updateMainImage();
+                }
+            });
+
+            // Next image
+            nextButton.addEventListener('click', function () {
+                if (currentGallery) {
+                    currentIndex = (currentIndex + 1) % currentGallery.images.length;
+                    updateMainImage();
+                }
+            });
+
+            // Click outside gallery to close
+            galleryModal.addEventListener('click', function (e) {
+                if (e.target === galleryModal) {
+                    galleryModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                if (galleryModal.classList.contains('active')) {
+                    if (e.key === 'Escape') {
+                        galleryModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    } else if (e.key === 'ArrowLeft') {
+                        prevButton.click();
+                    } else if (e.key === 'ArrowRight') {
+                        nextButton.click();
+                    }
+                }
+            });
+
+            function showGallery() {
+                galleryTitle.textContent = currentGallery.title;
+                updateMainImage();
+                updateThumbnails();
+                galleryModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function updateMainImage() {
+                mainGalleryImage.src = currentGallery.images[currentIndex];
+
+                // Update active thumbnail
+                const thumbnails = galleryThumbnails.querySelectorAll('.gallery-thumbnail');
+                thumbnails.forEach((thumb, index) => {
+                    thumb.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function updateThumbnails() {
+                galleryThumbnails.innerHTML = '';
+
+                currentGallery.images.forEach((image, index) => {
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = image;
+                    thumbnail.alt = `Thumbnail ${index + 1}`;
+                    thumbnail.classList.add('gallery-thumbnail');
+                    if (index === currentIndex) {
+                        thumbnail.classList.add('active');
+                    }
+
+                    thumbnail.addEventListener('click', function () {
+                        currentIndex = index;
+                        updateMainImage();
+                    });
+
+                    galleryThumbnails.appendChild(thumbnail);
+                });
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

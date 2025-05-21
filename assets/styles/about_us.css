@@ -1,4 +1,9 @@
 /* About Section Styles */
+body {
+    font-family: "Nunito Sans", sans-serif !important;
+}
+
+
 .about-section {
     padding: 100px 0;
     position: relative;
@@ -218,6 +223,81 @@
         flex-direction: column;
         gap: 15px;
     }
+}
+
+
+/* Vector Background Section */
+
+/* Vector Background Section */
+.vector-bg-section {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0;
+    background-color: #f8f9fa; /* Light background to contrast with dark navbar */
+}
+
+.vector-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.vector-circle {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.05);
+    top: -300px;
+    right: -300px;
+}
+
+.vector-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 500px solid rgba(139, 92, 246, 0.05);
+    bottom: -300px;
+    left: -150px;
+    transform: rotate(15deg);
+}
+
+.vector-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%234F46E5" opacity=".05"/></svg>');
+    background-size: cover;
+}
+
+/* Ensure content stays above vectors */
+.about-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Dark theme version if preferred */
+.dark-theme .vector-bg-section {
+    background-color: #0f0f18;
+}
+
+.dark-theme .vector-circle {
+    background: rgba(139, 92, 246, 0.05);
+}
+
+.dark-theme .vector-triangle {
+    border-bottom-color: rgba(79, 70, 229, 0.05);
+}
+
+.dark-theme .vector-wave {
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%238B5CF6" opacity=".05"/></svg>');
 }
 
 
@@ -546,5 +626,115 @@
         width: 35px;
         height: 35px;
         min-width: 35px;
+    }
+}
+
+
+/* Why choose us */
+
+
+/* Why Choose Us Section */
+.choose-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+}
+
+.choose-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 60px;
+}
+
+.choose-text, .choose-image {
+    flex: 1 1 500px;
+}
+
+.choose-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.choose-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(249, 250, 251, 1);
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.choose-item:hover {
+    background: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-left: 4px solid #4F46E5;
+}
+
+.choose-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(79, 70, 229, 0.1);
+    border-radius: 8px;
+    color: #4F46E5;
+}
+
+.choose-content h4 {
+    font-size: 1.1rem;
+    color: #1f1f2e;
+    margin-bottom: 8px;
+}
+
+.choose-content p {
+    font-size: 0.95rem;
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Animation Specifics */
+.choose-text {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.choose-image {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s;
+}
+
+.choose-text.active, .choose-image.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .choose-content {
+        flex-direction: column;
+    }
+    
+    .choose-text, .choose-image {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .choose-section {
+        padding: 60px 0;
+    }
+    
+    .choose-item {
+        flex-direction: column;
+        padding: 15px;
     }
 }
