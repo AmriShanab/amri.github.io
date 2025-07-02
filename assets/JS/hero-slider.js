@@ -1,50 +1,62 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true
-    });
-
-    // Slider message animations
-    const carousel = document.getElementById('heroCarousel');
+    const messages = document.querySelectorAll('.message');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentIndex = 0;
+    let messageInterval;
     
-    carousel.addEventListener('slide.bs.carousel', function (e) {
-        const activeSlide = e.relatedTarget;
-        const message = activeSlide.querySelector('.slide-message');
+    function showMessage(index) {
+        // Hide all messages
+        messages.forEach(msg => msg.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
         
-        // Reset animation
-        gsap.set(message, { y: 30, opacity: 0 });
-        
-        // Animate in
-        gsap.to(message, {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.3,
-            ease: "power2.out"
+        // Show selected message
+        messages[index].classList.add('active');
+        indicators[index].classList.add('active');
+        currentIndex = index;
+    }
+    
+    function nextMessage() {
+        const nextIndex = (currentIndex + 1) % messages.length;
+        showMessage(nextIndex);
+    }
+    
+    // Start rotation (every 5 seconds)
+    function startRotation() {
+        showMessage(0);
+        messageInterval = setInterval(nextMessage, 5000);
+    }
+    
+    // Click handler for indicators
+    indicators.forEach(indicator => {
+        indicator.addEventListener('click', function() {
+            clearInterval(messageInterval);
+            showMessage(parseInt(this.dataset.index));
+            messageInterval = setInterval(nextMessage, 5000);
         });
     });
-
-    // Welcome note animation
-    gsap.from(".welcome-note h2", {
-        scrollTrigger: {
-            trigger: ".welcome-note-section",
-            start: "top 80%"
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1
+    
+    // Pause on hover
+    const container = document.querySelector('.animated-message-container');
+    container.addEventListener('mouseenter', () => {
+        clearInterval(messageInterval);
     });
-
-    gsap.from(".welcome-content p", {
-        scrollTrigger: {
-            trigger: ".welcome-note-section",
-            start: "top 70%"
-        },
-        y: 30,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 0.8
+    
+    container.addEventListener('mouseleave', () => {
+        messageInterval = setInterval(nextMessage, 5000);
     });
+    
+    // Initialize
+    startRotation();
+    
+    // Video play handling
+    const video = document.getElementById('heroVideo');
+    if (video) {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                document.querySelector('.fallback-image').style.display = 'block';
+                video.style.display = 'none';
+            });
+        }
+    }
 });

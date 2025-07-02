@@ -1,3 +1,7 @@
+* {
+  font-family: "Nunito Sans", sans-serif !important;
+}
+
 /* Premium Navbar Styles */
 .premium-navbar {
     background: rgba(255, 255, 255, 0.96) !important;
@@ -28,12 +32,13 @@
 }
 
 .logo-img {
-    height: 80px; /* Increased from 60px */
+    height: auto;
+    max-height: 100px; /* Control size without scaling */
     width: auto;
     margin-right: 12px;
-    transition: all 0.3s ease;
-    transform: scale(2); /* Increased from 1.8 */
-    transform-origin: left center;
+    vertical-align: middle;
+    object-fit: contain;
+    transform: none; /* Remove unnecessary scaling */
 }
 
 
@@ -242,15 +247,16 @@
 /* Expertise Section */
 .expertise-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  /* background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); */
   position: relative;
   overflow: hidden;
+  background-color: #1f1f2e !important;
 }
 
-.section-title {
+.section-title-testimoonials {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1f1f2e;
+  color: #ffffff !important;
   margin-bottom: 15px;
   position: relative;
 }
@@ -270,6 +276,7 @@
   color: #6c757d;
   font-size: 1.1rem;
   margin-bottom: 30px;
+  font-weight: bolder !important;
 }
 
 .expertise-description {
@@ -292,7 +299,7 @@
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #4F46E5;
+  color: #ffffff;
   margin-bottom: 5px;
 }
 

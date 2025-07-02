@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Main header */
+.main-header {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  
+ 
+}
+
+.background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* background: url('https://picsum.photos/1920/1080') center/cover no-repeat; */
+  z-index: 0;
+}
+
+.navbar-container {
+  position: relative;
+  z-index: 100;
+  border-radius: 60px;
+  padding: 12px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  max-width: 1500px;
+  width: 80%;
+  overflow: hidden;
+   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  opacity: 0.9;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+
+}
+
+.navbar-container.scrolled {
+  background-color: #ffffff; /* Solid background on scroll */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+   background: transparent; /* Completely removes background color */
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.5); /* transparent background */
+  -webkit-backdrop-filter: blur(40px);
+
+}
+
+.main-nav a {
+  color: #14315d; /* Default color on scroll */
+}
+
+/* Optional: When at top, keep white text for nav links */
+.navbar-container:not(.scrolled) .main-nav a {
+  color: white;
+}
+
+/* Initially hidden */
+.navbar-container {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+/* Show navbar */
+.navbar-container.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  backdrop-filter: blur(20px);
+}
+
+/* Solid style */
+.navbar-container.solid {
+  background-color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  color: #14315d;
+}
+
+/* Fully hidden */
+.navbar-container.hidden {
+  opacity: 0;
+  transform: translateY(-60px);
+  pointer-events: auto;
+}
+
+/* Final stage (you can customize this effect) */
+.navbar-container.final {
+  opacity: 1;
+  transform: translateY(0);
+  background-color: #14315d;
+  color: white;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  pointer-events: all;
+}
+
+
+
+
+
+
+/* .navbar-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.75); /* Semi-transparent background */
+  /* backdrop-filter: blur(20px); /* Stronger blur */
+  /* -webkit-backdrop-filter: blur(20px); */
+/* }  */
+
+
+/* Logo */
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  height: 50px;
+  max-height: 49px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  opacity: 100%;
+}
+
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  z-index: 150;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  opacity: 100% !important;
+}
+
+.main-nav a:hover {
+  background-color: #14315d;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+/* Mobile burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.burger span {
+  width: 25px;
+  height: 3px;
+  background: #4f46e5;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    top: 0;
+    position: fixed;
+    width: 100%;
+  }
+
+  .navbar-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 16px;
+    border-radius: 0; /* Remove pill shape */
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 100;
+  }
+
+   .nav-logo {
+    height: 45px;
+    width: auto;
+    margin-right: 0 !important;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%; /* Below navbar */
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 12px 12px;
+    z-index: 150;
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .main-nav a {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .burger {
+    display: flex;
+
+  }
+
+  .burger span {
+    width: 25px;
+    height: 3px;
+    background: #4f46e5;
+    border-radius: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-logo {
+    margin-right: 0 !important;
+  }
+}
+

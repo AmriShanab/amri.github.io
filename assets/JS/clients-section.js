@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             logosTrack.style.animationPlayState = 'paused';
             setTimeout(() => {
                 logosTrack.style.animationPlayState = 'running';
-            }, 1000);
+            }, 800);
         }
     }
 });
